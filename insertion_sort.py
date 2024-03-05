@@ -28,7 +28,8 @@ def insertion_sort(bars, array, k):
     bars[k].set_height(array[k]) 
     bars[j+1].set_height(array[j])
     bars[k].set_color('red')
-    bars[j+1].set_color('red')
+    #bars[j+1].set_color('red')
+    bars[j].set_color('red')
 
 def update(num, array, bars):
     if num < len(array):
