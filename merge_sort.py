@@ -116,7 +116,7 @@ def update(frame, array, bars):
     #divide
     #conquer
     #combine
-    
+    return
     
 def mergesort_animation():
     array = create_array()
