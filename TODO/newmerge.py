@@ -47,20 +47,19 @@ def merge(a, bars, beginning, middle, end):
 
     return merged
 
+def update(frame, array, bars):
+        middle = min(start + width, len(array))
+        end = min(start + 2 * width, len(array))
+        merge_sort(array, bars, beginning, middle, end)
+    #frame set to log2(len(array))) + 1 which is # of steps in merge sort operation to properly show animation
+
 def merge_sort_animation(a):
     array = create_array()
-
+ 
     fig, ax = plt.subplots()
 
     bars = plt.bar(range(len(array)), array, color='b')
     
-    def update(frame, array, bars):
-        width = 2 ** frame
-        for begining in range(0, len(array), 2 * width):
-            middle = min(start + width, len(array))
-            end = min(start + 2 * width, len(array))
-            merge_sort(array, bars, beginning, middle, end)
-    #frame set to log2(len(array))) + 1 which is # of steps in merge sort operation to properly show animation
     ani = anim.FuncAnimation(fig, update, fargs=(array,bars), frames=int(np.log2(len(array))) + 1, repeat=True, interval = 100)
     
     ax.set_facecolor('black')
