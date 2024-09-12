@@ -12,14 +12,14 @@ def create_array():
 #for merge sort
 #divide the array into 2
 #sort each half by dividing until there are only two elements?
-def merge_sort(a, bars, beginning, middle, end):
+def merge_sort(a, bars, stat, middle, end):
     if (len(a) < 2):
         return a
 
     half = len(a) // 2
     return merge(merge_sort(a[:half]), bars, 0, half, len(a))
 
-def merge(a, bars, beginning, middle, end):
+def merge(a, bars, start, middle, end):
     merged = []
     l = 0
     r = 0
@@ -42,15 +42,17 @@ def merge(a, bars, beginning, middle, end):
         r += 1
 
     for i in range(len(merged)):
-        a[beginning + i] = merged[i]
-        bars[beginning + i].set_height(merged[i])
+        a[start + i] = merged[i]
+        bars[start + i].set_height(merged[i])
 
     return merged
 
 def update(frame, array, bars):
+        start = 0
+        width = len(array)
         middle = min(start + width, len(array))
         end = min(start + 2 * width, len(array))
-        merge_sort(array, bars, beginning, middle, end)
+        merge_sort(array, bars, start, middle, end)
     #frame set to log2(len(array))) + 1 which is # of steps in merge sort operation to properly show animation
 
 def merge_sort_animation(a):
